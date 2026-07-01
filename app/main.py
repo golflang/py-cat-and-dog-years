@@ -1,3 +1,14 @@
+def calculate_age(pet_age: int, step: int) -> int:
+    if pet_age < 15:
+        human_age = 0
+    elif 15 <= pet_age <= 23:
+        human_age = 1
+    else:
+        pet_age -= 24
+        human_age = (pet_age // step) + 2
+    return human_age
+
+
 def get_human_age(cat_age: int, dog_age: int) -> list:
     """
     Convert cat and dog ages to human years.
@@ -15,20 +26,4 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(24, 24) == [2, 2]
     """
     # TODO: Implement this function
-    if cat_age < 15:
-        cat_human_age = 0
-    elif 15 <= cat_age <= 23:
-        cat_human_age = 1
-    else:
-        cat_age -= 24
-        cat_human_age = (cat_age // 4) + 2
-
-    if dog_age < 15:
-        dog_human_age = 0
-    elif 15 <= dog_age <= 23:
-        dog_human_age = 1
-    else:
-        dog_age -= 24
-        dog_human_age = (dog_age // 5) + 2
-
-    return [cat_human_age, dog_human_age]
+    return [calculate_age(cat_age, 4), calculate_age(dog_age, 5)]
